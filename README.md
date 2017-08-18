@@ -1,6 +1,6 @@
 # Long exposure with OpenCV and Python
 
-Applies the 'long exposure' effect based on videos, using Python and OpenCV.
+An algorithm that creates long exposure-like images from an input video using Python and OpenCV. It computationally simulates the long exposure photography effect.
 
 [Long-exposure photography][1]:
 
@@ -9,22 +9,32 @@ Applies the 'long exposure' effect based on videos, using Python and OpenCV.
 ## Usage
 
 ```
-
-$ python long_exposure.py --video C:\\video.avi --output C:\\output_image.png --step 1
-
+$ python long_exposure.py --video C:\video.avi --output C:\output_image.png --step 1
 ```
 
-**Input:**
+### Arguments
 
-![Input](http://i.imgur.com/ji8h6FK.jpg)
+- **video**: you must pass the file path and file name as the **video** argument. E.g.: `C:\videos\video.avi`.
+- **output**: you must pass the file path and file name for the **output** file (image). E.g. `C:\output_image.png`.
+- **step**: you can pass a **step** value as an argument. Its default value is 1. It is used to skip some frames and make the processing faster. Keep in mind that using higher **step** values will result in losing frames/information.
 
-**Output:**
+### Requirements
 
-![Output](http://i.imgur.com/UXVCLIE.jpg)
+- Python 2.7
+- OpenCV 3.1
+
+## Input/Output
+
+| **Input (video)** | **Output (image)** |
+|:---------:|:----------:|
+| ![Input](http://i.imgur.com/ji8h6FK.jpg) | ![Output](http://i.imgur.com/UXVCLIE.jpg) |
+| ![Input](http://i.imgur.com/l97V6Cm.jpg) | ![Output](http://i.imgur.com/oPedXbB.jpg) |
 
 ## References
 
-**Long exposure with OpenCV and Python**. Adrian Rosebrock.
+- **Long exposure with OpenCV and Python**. Adrian Rosebrock.
 http://www.pyimagesearch.com/2017/08/14/long-exposure-with-opencv-and-python/
+
+- **Long-exposure photography**. https://en.wikipedia.org/wiki/Long-exposure_photography
 
   [1]: https://en.wikipedia.org/wiki/Long-exposure_photography
