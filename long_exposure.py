@@ -64,7 +64,7 @@ class LongExposure(object):
         print("[INFO] Computing frame averages...")
 
         # Get the total number of frames to show the progress bar
-        total_frames = int(stream.get(cv2.CAP_PROP_FRAME_COUNT))
+        total_frames = int(stream.get(cv2.cv.CV_CAP_PROP_FRAME_COUNT))
 
         # Initialize the progress bar
         progress_bar = ProgressBar(total_frames)
