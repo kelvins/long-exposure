@@ -1,5 +1,7 @@
 # Long exposure with OpenCV and Python
 
+[![Build Status](https://travis-ci.org/kelvins/long-exposure.svg?branch=master)](https://travis-ci.org/kelvins/long-exposure)
+
 This project creates long exposure-like images from an input video using Python and OpenCV. It computationally simulates the long exposure photography effect.
 
 [Long-exposure photography][1]:
