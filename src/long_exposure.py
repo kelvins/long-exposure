@@ -1,6 +1,7 @@
 import logging
 
 import cv2
+import click
 from tqdm import tqdm
 
 logging.basicConfig(level=logging.INFO)
@@ -52,3 +53,38 @@ class LongExposure:
 
         # Release the stream pointer
         stream.release()
+
+
+@click.group()
+def cli():
+    """Apply the long exposure algorithm to a video."""
+    pass
+
+
+@cli.command()
+@click.argument('video_path', nargs=1, type=str)
+@click.argument('image_path', nargs=1, type=str)
+@click.option(
+    '--step', '-s', default=1, type=int, show_default=True,
+    help='Step used to get the frames.'
+)
+def local_video(video_path, image_path, step):
+    """Apply the long exposure algorithm to a local video."""
+    long_exposure = LongExposure(video_path, image_path, step)
+    long_exposure()
+
+
+@cli.command()
+@click.argument('video_link', nargs=1, type=str)
+@click.argument('image_path', nargs=1, type=str)
+@click.option(
+    '--step', '-s', default=1, type=int, show_default=True,
+    help='Step used to get the frames.'
+)
+def youtube_video(video_link, image_path, step):
+    """Apply the long exposure algorithm to a youtube video."""
+    raise NotImplementedError('Not implemented yet')
+
+
+if __name__ == '__main__':
+    cli()
