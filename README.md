@@ -1,6 +1,6 @@
 # Long exposure with OpenCV and Python
 
-An algorithm that creates long exposure-like images from an input video using Python and OpenCV. It computationally simulates the long exposure photography effect.
+This project creates long exposure-like images from an input video using Python and OpenCV. It computationally simulates the long exposure photography effect.
 
 [Long-exposure photography][1]:
 
@@ -8,20 +8,34 @@ An algorithm that creates long exposure-like images from an input video using Py
 
 ## Usage
 
+The usage is very simple, we just need to call the script passing a desired operation (e.g. `local-video`), the video path, the output image path and the step (optional), for example:
+
+```bash
+$ python src/long_exposure.py local-video /home/user/videos/video.mp4 /home/user/images/long_exp.png -s 5
 ```
-$ python long_exposure.py --video C:\video.avi --output C:\output_image.png --step 1
+
+If you have doubts you can call for help:
+
+```bash
+python src/long_exposure.py --help
 ```
 
-### Arguments
+## Environment
 
-- **video**: you must pass the file path and file name as the **video** argument. E.g.: `C:\videos\video.avi`.
-- **output**: you must pass the file path and file name for the **output** file (image). E.g. `C:\output_image.png`.
-- **step**: you can pass a **step** value as an argument. Its default value is 1. It is used to skip some frames and make the processing faster. Keep in mind that using higher **step** values will result in losing frames/information.
+This project uses `pipenv` so to set up the environment you need to make sure you have `pipenv` installed and run the following commands to install the dependencies and activate the virtual environment:
 
-### Requirements
+```bash
+pipenv install --dev
+pipenv shell
+```
 
-- Python 2.7
-- OpenCV 3.1
+## Tests
+
+We can run the tests using `pytest` directly or using the `Makefile`, for example:
+
+```bash
+make runtests
+```
 
 ## Input/Output
 
