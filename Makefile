@@ -1,0 +1,2 @@
+runtests:
+	@pytest -vv tests/
