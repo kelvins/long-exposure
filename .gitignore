@@ -1,0 +1,17 @@
+# Python
+*.pyc
+
+# VSCode
+.vscode
+
+# Coverage
+.coverage
+
+# Videos
+*.mp4
+*.avi
+
+# Images
+*.png
+*.jpg
+*.jpeg
