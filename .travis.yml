@@ -13,4 +13,4 @@ install:
 
 script:
   - pipenv run make code-check
-  - pipenv run make tests
+  - pipenv run make runtests
