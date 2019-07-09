@@ -1,3 +1,6 @@
+# Python
+*.pyc
+
 # VSCode
 .vscode
 
