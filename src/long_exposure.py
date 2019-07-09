@@ -18,15 +18,17 @@ class LongExposure:
         """Calculate the average using a clojure."""
         count = 0
         total = 0.0
+
         def average(value):
             nonlocal count, total
             count += 1
             total += value
-            return total/count
+            return total / count
+
         return average
 
     def __call__(self):
-        logging.info('Processing video %r with step %r', self.video, self.step)
+        logging.info("Processing video %r with step %r", self.video, self.step)
 
         # Open a pointer to the video file
         stream = cv2.VideoCapture(self.video)
@@ -43,12 +45,12 @@ class LongExposure:
 
             if count % self.step == 0:
                 # Get the current RGB
-                b_curr, g_curr, r_curr = cv2.split(frame.astype('float'))
+                b_curr, g_curr, r_curr = cv2.split(frame.astype("float"))
                 r, g, b = r_avg(r_curr), g_avg(g_curr), b_avg(b_curr)
 
         # Merge the RGB averages together and write the output image to disk
-        avg = cv2.merge([b, g, r]).astype('uint8')
-        logging.info('Saving image as %r', self.output_image_path)
+        avg = cv2.merge([b, g, r]).astype("uint8")
+        logging.info("Saving image as %r", self.output_image_path)
         cv2.imwrite(self.output_image_path, avg)
 
         # Release the stream pointer
@@ -62,11 +64,15 @@ def cli():
 
 
 @cli.command()
-@click.argument('video_path', nargs=1, type=str)
-@click.argument('image_path', nargs=1, type=str)
+@click.argument("video_path", nargs=1, type=str)
+@click.argument("image_path", nargs=1, type=str)
 @click.option(
-    '--step', '-s', default=1, type=int, show_default=True,
-    help='Step used to get the frames.'
+    "--step",
+    "-s",
+    default=1,
+    type=int,
+    show_default=True,
+    help="Step used to get the frames.",
 )
 def local_video(video_path, image_path, step):
     """Apply the long exposure algorithm to a local video."""
@@ -75,16 +81,20 @@ def local_video(video_path, image_path, step):
 
 
 @cli.command()
-@click.argument('video_link', nargs=1, type=str)
-@click.argument('image_path', nargs=1, type=str)
+@click.argument("video_link", nargs=1, type=str)
+@click.argument("image_path", nargs=1, type=str)
 @click.option(
-    '--step', '-s', default=1, type=int, show_default=True,
-    help='Step used to get the frames.'
+    "--step",
+    "-s",
+    default=1,
+    type=int,
+    show_default=True,
+    help="Step used to get the frames.",
 )
 def youtube_video(video_link, image_path, step):
     """Apply the long exposure algorithm to a youtube video."""
-    raise NotImplementedError('Not implemented yet')
+    raise NotImplementedError("Not implemented yet")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     cli()
