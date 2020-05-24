@@ -43,7 +43,7 @@ class LongExposure:
             # Split the frame into its respective channels
             _, frame = stream.read()
 
-            if count % self.step == 0:
+            if count % self.step == 0 and frame is not None:
                 # Get the current RGB
                 b_curr, g_curr, r_curr = cv2.split(frame.astype("float"))
                 r, g, b = r_avg(r_curr), g_avg(g_curr), b_avg(b_curr)
